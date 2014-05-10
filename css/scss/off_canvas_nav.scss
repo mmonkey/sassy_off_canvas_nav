@@ -1,0 +1,329 @@
+/*! off_canvas_nav.css v1.0.0 | MIT License | by: CJ O'Hara */
+
+//
+// Variables
+//
+
+// How wide the off-canvas navigation menu is (when opened)
+$off-canvas-width: 200px;
+
+// Position of the off-canvas navigation, options: right or left
+$off-canvas-position: left;
+
+// What breakpoint should the off-canvas navigation be shown
+$off-canvas-breakpoint: 64em;
+
+// How tall the off-canvas top menu is
+$off-canvas-top-menu-height: 50px;
+
+// How big the subnav toggle is (triangle)
+$subnav-toggle-size: 8px;
+
+// How bit the close button is
+$off-canvas-top-menu-button-size: 24px;
+
+//
+// Colors
+//
+
+$main-background: white;
+$nav-toggle-color: black;
+$off-canvas-background: grey;
+$off-canvas-top-menu-background: grey;
+$subnav-toggle-color: black;
+$subnav-toggle-hover-color: #ddd;
+$top-menu-button-color: black;
+$top-menu-button-hover-color: #ddd;
+
+//
+// Mixins
+//
+
+@mixin off-canvas-breakpoint {
+  @media only screen and (max-width: $off-canvas-breakpoint) {
+    @content;
+  }
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+    
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation: $animations;
+    -o-animation: $animations;
+    animation: $animations;
+}
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+@mixin box-shadow($args...) {
+  -webkit-box-shadow: $args;
+  -moz-box-shadow: $args;
+  -ms-box-shadow: $args;
+  box-shadow: $args;
+}
+
+//
+// Functions
+//
+
+@function get-opposite($direction) {
+	$opposite: right;
+	@if $direction == 'right' {
+		$opposite: left;
+	}
+	@return $opposite;
+}
+@function get-opposite-padding($direction) {
+	$opposite-padding: padding-right;
+	@if $direction == 'right' {
+		$opposite-padding: padding-left;
+	}
+	@return $opposite-padding;
+}
+
+//
+// Styles
+//
+
+html, body {
+	height: 100%;
+}
+.container {
+	overflow: hidden;
+	background-color: black;
+}
+.off_canvas_container {
+	background: $off-canvas-background;
+	width: $off-canvas-width + 20px;
+	#{get-opposite-padding($off-canvas-position)}: 20px;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	z-index: 0;
+	display: none;
+	overflow-x: hidden;
+	overflow-y: scroll;
+  	-webkit-overflow-scrolling: touch;
+
+	@include off-canvas-breakpoint {
+		display: block;
+	}
+}
+.content {
+	background: $main-background;
+	position: relative;
+	#{$off-canvas-position}: 0;
+	padding: 3em 1em 2em 1em;
+	z-index: 1;
+	@include box-shadow(0px 0px 6px #333);
+}
+.burger {
+	list-style: none;
+	position: relative;
+	margin: 0;
+	padding: 10px;
+	top: 0;	
+	#{$off-canvas-position}: 10px;
+	display: none;
+	cursor: pointer;
+	z-index: 100;
+	@include off-canvas-breakpoint {
+		display: block;
+	}
+
+	li {
+		width: 30px;
+		height: 4px;
+		background-color: $nav-toggle-color;
+		@include border-radius(0px);
+		margin: 5px 0;
+	}
+}
+.off_canvas_top_menu {
+	display: block;
+	position: fixed;
+	top: 0;
+	z-index: 3;
+	#{get-opposite-padding($off-canvas-position)}: 20px;
+	#{$off-canvas-position}: 0;
+	width: $off-canvas-width + 20px;
+	height: $off-canvas-top-menu-height;
+	background: $off-canvas-top-menu-background;
+}
+.off_canvas_toggles {
+	position: relative;
+	width: $off-canvas-width;
+	height: $off-canvas-top-menu-height;
+}
+.back_btn, .close_btn {
+	cursor: pointer;
+}
+.back_btn {
+	display: none;
+	position: absolute;
+	text-decoration: none;
+	width: 20px;
+	height: 0; 
+	border-top: $off-canvas-top-menu-button-size / 2 solid transparent;
+	border-bottom: $off-canvas-top-menu-button-size / 2 solid transparent;
+	border-right: $off-canvas-top-menu-button-size / 2 solid $top-menu-button-color;
+	top: ($off-canvas-top-menu-height - ($off-canvas-top-menu-button-size / 2) * 2) / 2;
+	left: ($off-canvas-top-menu-height - ($off-canvas-top-menu-button-size / 2) * 2) / 2;
+}
+.back_btn:hover {
+	border-right-color: $top-menu-button-hover-color;
+}
+.close_btn {
+	@include border-radius(50%);
+	position: absolute;
+	font-size: $off-canvas-top-menu-button-size;
+	height: $off-canvas-top-menu-button-size + 5;
+	width: $off-canvas-top-menu-button-size + 5;
+	border: 1px solid $top-menu-button-color;
+	display: inline-block;
+	text-align: center;
+	line-height: $off-canvas-top-menu-button-size + 5;
+	top: ($off-canvas-top-menu-height - ($off-canvas-top-menu-button-size + 5)) / 2;
+	#{get-opposite($off-canvas-position)}: ($off-canvas-top-menu-height - ($off-canvas-top-menu-button-size+ 5)) / 2;
+	color: $top-menu-button-color;
+}
+.close_btn:hover {
+	color: $top-menu-button-hover-color;
+	border-color: $top-menu-button-hover-color;
+}
+nav.off_canvas {
+	position: relative;
+	margin-top: $off-canvas-top-menu-height;
+	display: none;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	webkit-overflow-scrolling: touch;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	a, a:link, a:visited {
+		display: block;
+	}
+	> ul ul {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		background: $off-canvas-background;
+		width: $off-canvas-width;
+		#{$off-canvas-position}: $off-canvas-width + 20px;
+		display: block;
+		@include transition(#{$off-canvas-position} .35s ease-in-out);
+	}
+	span.dropdown_toggle {
+		position: absolute;
+		text-decoration: none;
+		right: 0;
+		width: 20px;
+		height: 0; 
+		border-top: $subnav-toggle-size solid transparent;
+		border-bottom: $subnav-toggle-size solid transparent;
+		border-left: $subnav-toggle-size solid $subnav-toggle-color;
+	}
+	li:hover > a > span.dropdown_toggle:hover {
+		border-left-color: $subnav-toggle-hover-color;
+	}
+	ul.dropdown_current {
+		z-index: 2;
+		#{$off-canvas-position}: 0;
+	}
+	ul.dropdown_prev {
+		z-index: 1;
+		#{$off-canvas-position}: 0;
+	}
+}
+
+@include off-canvas-breakpoint {
+	nav.main_nav {
+		display: none;
+	}
+	nav.off_canvas {
+		display: block;
+	}
+	.off_canvas_top_menu.open,
+	.off_canvas_container.open {
+		opacity: 1;
+		#{$off-canvas-position}: 0;
+		position: fixed;
+		@include animation(slideIn .35s ease-in-out);
+	}
+
+	@include keyframes(slideIn) {
+		0% { opacity: .3; #{$off-canvas-position}: $off-canvas-width / 4; }
+		100% { opacity: 1; #{$off-canvas-position}: 0; }
+	}
+
+	/*Nav Shrinking Closed Effect*/
+	.off_canvas_top_menu.close,
+	.off_canvas_container.close {
+		opacity: .3;
+		#{$off-canvas-position}: $off-canvas-width / 4;
+		@include animation(slideOut .35s ease-in-out);
+	}
+	@include keyframes(slideOut) {
+		0% { opacity: 1; #{$off-canvas-position}: 0; }
+		100% { opacity: .3; #{$off-canvas-position}: $off-canvas-width / 4; }
+	}
+
+	/* CONTENT ANNIMATION */
+	.top_layer.open {   
+		#{$off-canvas-position}: $off-canvas-width;
+		cursor: pointer;
+		@include animation(open .5s ease-in-out);
+	}
+	@include keyframes(open) {
+		0% { #{$off-canvas-position}: 0; }
+		70% { #{$off-canvas-position}: $off-canvas-width + 20px; }
+		100% { #{$off-canvas-position}: $off-canvas-width; }
+	}
+
+	/*Content Sliding Closed Effect*/
+	.top_layer.close {
+		#{$off-canvas-position}: 0;
+		@include animation(close .3s ease-in-out);
+	}
+	@include keyframes(close) {
+		0% { #{$off-canvas-position}: $off-canvas-width; }
+		100% { #{$off-canvas-position}: 0; }
+	}
+}
