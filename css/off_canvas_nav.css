@@ -111,7 +111,8 @@ html, body {
 nav.off_canvas {
   position: relative;
   margin-top: 50px;
-  display: none; }
+  display: none;
+  overflow: hidden; }
   nav.off_canvas ul {
     list-style: none;
     margin: 0;

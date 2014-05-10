@@ -128,7 +128,7 @@ html, body {
 	bottom: 0;
 	z-index: 0;
 	display: none;
-
+	overflow-x: hidden;
 	overflow-y: scroll;
   	-webkit-overflow-scrolling: touch;
 
@@ -221,6 +221,7 @@ nav.off_canvas {
 	position: relative;
 	margin-top: $off-canvas-top-menu-height;
 	display: none;
+	overflow: hidden;
 
 	ul {
 		list-style: none;
