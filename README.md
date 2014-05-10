@@ -78,10 +78,7 @@ Before the `</body>` tag, call the offCanvasNav() script.
 
 ```html
 <script>
-	offCanvasNav({
-		nav_toggle: ".nav_toggle",
-		target_nav: ".dropdown"
-	});
+	offCanvasNav();
 </script>
 ```
 
