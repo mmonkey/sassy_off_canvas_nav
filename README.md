@@ -62,6 +62,7 @@ Add the nav toggle button and your navigation to the `.content` div. I like to w
 
 ```html
 <header class="top_layer slide">
+	<!-- using a ul to create the three-lined nav-toggle icon -->
 	<ul class="nav_toggle burger"><li></li><li></li><li></li></ul>
 	<nav class="dropdown">
 	...
@@ -95,6 +96,7 @@ Some options are available when calling the offCanvasNav() script. As you can se
 ```
 
 **Note:** *Sassy Off-Canvas Navigation needs to know what your navigation class is, because it will make a duplicate navigation and put it into the `.off_canvas_container`.*
-*The newly created nav be* `<nav class="off_canvas">`
+
+*The newly created nav is* `<nav class="off_canvas">`
 
 by CJ O'Hara.
