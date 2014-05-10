@@ -74,9 +74,9 @@ Add the nav toggle button and your navigation to the `.content` div. I like to w
 
 
 
-Before the `</body>` tag, call the offCanvasNav() script. You can change the toggle button class, and the main nav class in the options, like so.
+Before the `</body>` tag, call the offCanvasNav() script.
 
-```javascript
+```html
 <script>
 	offCanvasNav({
 		nav_toggle: ".nav_toggle",
@@ -85,4 +85,18 @@ Before the `</body>` tag, call the offCanvasNav() script. You can change the tog
 </script>
 ```
 
-**Note:** *Sassy Off-Canvas Navigation needs to know what your navigation class is, because it will make a duplicate navigation and put it into the "off_canvas_container". The newly created nav be* `<nav class="off_canvas">`.
+## Options
+
+Some options are available when calling the offCanvasNav() script. As you can see I am telling the script that the menu toggle button is called `.nav_toggle` and the main navigation is called `nav.dropdown`
+
+```html
+<script>
+	offCanvasNav({
+		nav_toggle: ".nav_toggle",
+		target_nav: ".dropdown"
+	});
+</script>
+```
+
+**Note:** *Sassy Off-Canvas Navigation needs to know what your navigation class is, because it will make a duplicate navigation and put it into the `.off_canvas_container`.*
+*The newly created nav be* `<nav class="off_canvas">`
