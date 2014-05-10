@@ -1,10 +1,9 @@
 Sassy Off-Canvas Navigation
 ===========================
 
-Off-Canvas Navigation with CSS Transitions, written in SASS and jQuery. Sassy Off-Canvas Navigation supports multi-level navigation, it is easy to use.
+Off-Canvas Navigation with CSS Transitions, written in SASS and jQuery. Sassy Off-Canvas Navigation supports single-level navigation, multi-level navigation and plays nice with the rest of your code!
 
-Version: 1.0
-By: CJ O'Hara
+Version: 1.0.0
 
 ## Introduction
 
@@ -97,3 +96,5 @@ Some options are available when calling the offCanvasNav() script. As you can se
 
 **Note:** *Sassy Off-Canvas Navigation needs to know what your navigation class is, because it will make a duplicate navigation and put it into the `.off_canvas_container`.*
 *The newly created nav be* `<nav class="off_canvas">`
+
+by CJ O'Hara.
