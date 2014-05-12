@@ -96,7 +96,7 @@ Turn into:
 <span class="nav_prev_btn"><i class="icon-left"></i>Back</span>
 <span class="nav_close_btn"><i class="icon-cancel"></i></span>
 <span class="nav_toggle"><i class="icon-menu"></span>
-```html
+```
 
 ### jQuery
 
