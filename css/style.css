@@ -113,10 +113,10 @@ nav.dropdown li:hover > ul {
 .nav_toggle {
   font-size: 2em;
   padding: 0.125em;
-  color: #aaa; }
+  color: #aaaaaa; }
 
 .nav_toggle:hover {
-  color: #eee; }
+  color: #eeeeee; }
 
 .off_canvas_top_menu {
   background: #444; }
@@ -124,19 +124,19 @@ nav.dropdown li:hover > ul {
 .nav_close_btn {
   font-size: 1.25em;
   padding: 0.5em;
-  color: #aaa; }
+  color: #aaaaaa; }
 
 .nav_prev_btn {
   font-size: 1em;
   padding: 0.75em;
-  color: #aaa;
+  color: #aaaaaa;
   text-transform: uppercase; }
 
 .nav_prev_btn i {
   font-size: 1.25em; }
 
 .nav_close_btn:hover, .nav_prev_btn:hover {
-  color: #eee; }
+  color: #eeeeee; }
 
 nav.off_canvas a, nav.off_canvas a:link, nav.off_canvas a:visited {
   color: black;
@@ -152,3 +152,7 @@ nav.off_canvas li:hover {
 nav.off_canvas span.nav_next_btn {
   padding: 0 0.5em;
   font-weight: bold; }
+nav.off_canvas li:hover span.nav_next_btn {
+  color: black; }
+nav.off_canvas li:hover span.nav_next_btn:hover {
+  color: white; }
