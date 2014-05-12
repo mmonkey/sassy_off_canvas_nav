@@ -9,10 +9,42 @@ $off-canvas-text-hover: white;
 $off-canvas-li-background: #999;
 $off-canvas-li-hover-background: #333;
 
-
 //
 // Style
 //
+
+.content {
+	padding: 2.5em 1em 1em 1em;
+	@include box-shadow(0px 0px 6px #333);
+}
+.nav_toggle {
+	font-size: 2em;
+	padding: 0.125em;
+	color: #aaa;
+}
+.nav_toggle:hover {
+	color: #eee;
+}
+.off_canvas_top_menu {
+	background: #444;
+}
+.nav_close_btn {
+	font-size: 1.25em;
+	padding: 0.5em;
+	color: #aaa;
+}
+.nav_prev_btn {
+	font-size: 1em;
+	padding: 0.75em;
+	color: #aaa;
+	text-transform: uppercase;
+}
+.nav_prev_btn i {
+	font-size: 1.25em;
+}
+.nav_close_btn:hover, .nav_prev_btn:hover {
+	color: #eee;
+}
 
 nav.off_canvas {
 	a, a:link, a:visited {
@@ -20,18 +52,18 @@ nav.off_canvas {
 		text-decoration: none;
 		padding: 0.5em 1em;
 		text-transform: uppercase;
-		background: $off-canvas-li-background;
 	}
 	li:hover > a {
 		color: $off-canvas-text-hover;
 	}
 	li {
-		border-bottom: 1px solid black;
+		background: $off-canvas-li-background;
 	}
-	li:hover > a {
+	li:hover {
 		background: $off-canvas-li-hover-background;
 	}
-	li:hover > a > span.dropdown_toggle {
-		border-left-color: $off-canvas-text-hover;
+	span.nav_next_btn {
+		padding: 0 0.5em;
+		font-weight: bold;
 	}
 }

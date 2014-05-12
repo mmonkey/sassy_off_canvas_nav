@@ -16,8 +16,8 @@ Finding the perfect off-canvas navigation for responsive website developent, has
 Using Off-Canvas Navigation, couldn't be easier, to get started add the following into the `<head>` of your html.
 
 ```html
-<link rel="stylesheet" type="text/css" href="css/normalize.min.css">
-<link rel="stylesheet" type="text/css" href="css/off_canvas_nav.min.css">
+<link rel="stylesheet" type="text/css" href="css/normalize.css">
+<link rel="stylesheet" type="text/css" href="css/off_canvas_nav.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 ```
 
@@ -26,7 +26,7 @@ You can add any version of jquery you would like, but as this writing, this is t
 
 ```html
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/off_canvas_nav.min.js"></script>
+<script type="text/javascript" src="js/off_canvas_nav.js"></script>
 ```
 
 Now inside the `<body>` tags, add the main container, off-canvas container and content-containers.
@@ -36,11 +36,11 @@ Anything you put into the `.off_canvas_container` will be displayed in the panel
 ```html
 <div class="container">
 	
-	<div class="off_canvas_container slide">
+	<div class="off_canvas_animate slide off_canvas_container">
 
 	</div>
 
-	<div class="top_layer content slide">
+	<div class="content_animate slide content">
 
 	</div>
 
@@ -52,8 +52,8 @@ Add the off-canavs top menu controls. This should be in the `.off_canvas_contain
 ```html
 <div class="off_canvas_top_menu slide">
 	<div class="off_canvas_toggles">
-		<span class="back_btn"></span>
-		<span class="close_btn">X</span>
+		<span class="nav_prev_btn"></span>
+		<span class="nav_close_btn"></span>
 	</div>
 </div>
 ```
@@ -61,18 +61,38 @@ Add the off-canavs top menu controls. This should be in the `.off_canvas_contain
 Add the nav toggle button and your navigation to the `.content` div. I like to wrap mine in `<header>` tags
 
 ```html
-<header class="top_layer slide">
-	<!-- using a ul to create the three-lined nav-toggle icon -->
-	<ul class="nav_toggle burger"><li></li><li></li><li></li></ul>
+<header class="content_animate slide">
+	<span class="nav_toggle"></i></span>
 	<nav class="dropdown">
 	...
 	</nav>
 </header>
 ```
 
+**Note:** *Any element that is not inside `.content` or any element that has a fixed position, that needs to slide away to reveal the off-canvas navigation, needs the following classes:*
+
+```html
+class="content_animate slide"
+```
+
+### BYO Icons
+
+All `._btn` and `._toggle` elements should be filled with your own icons and text. Out-of-the-box, these elements have very basic position-based styling.
+
+These:
+```html
+<span class="nav_prev_btn"></span>
+<span class="nav_close_btn"></span>
+<span class="nav_toggle"></span>
+```
+Turn into:
+```html
+<span class="nav_prev_btn"><i class="icon-left"></i>Back</span>
+<span class="nav_close_btn"><i class="icon-cancel"></i></span>
+<span class="nav_toggle"><i class="icon-menu"></span>
+```html
+
 ### jQuery
-
-
 
 Before the `</body>` tag, call the offCanvasNav() script.
 
@@ -82,21 +102,24 @@ Before the `</body>` tag, call the offCanvasNav() script.
 </script>
 ```
 
-## Options
+### Options
 
-Some options are available when calling the offCanvasNav() script. As you can see I am telling the script that the menu toggle button is called `.nav_toggle` and the main navigation is called `nav.dropdown`
+Some options are available when calling the offCanvasNav() script.
 
 ```html
 <script>
 	offCanvasNav({
-		nav_toggle: ".nav_toggle",
-		target_nav: ".dropdown"
+		target_nav: '.dropdown',
+		nav_next_btn: '<i class="icon-right"></i>'
 	});
 </script>
 ```
 
-**Note:** *Sassy Off-Canvas Navigation needs to know what your navigation class is, because it will make a duplicate navigation and put it into the `.off_canvas_container`.*
+**Note:** *Sassy Off-Canvas Navigation needs to know what your navigation class is, because it will make a duplicate navigation and put it into the `.off_canvas_container`. The default class is `.main_nav` *
 
 *The newly created nav is* `<nav class="off_canvas">`
+
+## Change Log
+v1.0.0 - Initial Release
 
 by CJ O'Hara.

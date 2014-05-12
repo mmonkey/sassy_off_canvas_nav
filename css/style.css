@@ -1,3 +1,46 @@
+@font-face {
+  font-family: 'sassy_off_canvas_nav';
+  src: url("../fonts/sassy_off_canvas_nav.eot?2816505");
+  src: url("../fonts/sassy_off_canvas_nav.eot?2816505#iefix") format("embedded-opentype"), url("../fonts/sassy_off_canvas_nav.woff?2816505") format("woff"), url("../fonts/sassy_off_canvas_nav.ttf?2816505") format("truetype"), url("../fonts/sassy_off_canvas_nav.svg?2816505#sassy_off_canvas_nav") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'sassy_off_canvas_nav';
+    src: url('../font/sassy_off_canvas_nav.svg?2816505#sassy_off_canvas_nav') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "sassy_off_canvas_nav";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: .2em; }
+
+.icon-menu:before {
+  content: '\e802'; }
+
+.icon-left:before {
+  content: '\e801'; }
+
+.icon-right:before {
+  content: '\e800'; }
+
+.icon-cancel:before {
+  content: '\e803'; }
+
 body {
   font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   font-size: 16px;
@@ -7,12 +50,12 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  background: #cccccc;
-  -webkit-box-shadow: 0 6px 6px -3px #999999;
-  -moz-box-shadow: 0 6px 6px -3px #999999;
-  -ms-box-shadow: 0 6px 6px -3px #999999;
-  box-shadow: 0 6px 6px -3px #999999; }
+  right: 0;
+  background: #222222;
+  -webkit-box-shadow: 0 6px 6px -3px #bbbbbb;
+  -moz-box-shadow: 0 6px 6px -3px #bbbbbb;
+  -ms-box-shadow: 0 6px 6px -3px #bbbbbb;
+  box-shadow: 0 6px 6px -3px #bbbbbb; }
 
 nav.dropdown > ul {
   width: 100%;
@@ -35,11 +78,11 @@ nav.dropdown li {
 nav.dropdown a, nav.dropdown a:link, nav.dropdown a:visited {
   display: block;
   text-decoration: none;
-  color: black;
-  background: #cccccc; }
+  color: #eeeeee;
+  background: #222222; }
 nav.dropdown li:hover > a {
-  color: white;
-  background: #aaaaaa; }
+  color: #eeeeee;
+  background: #555555; }
 nav.dropdown > ul ul {
   display: none;
   position: absolute;
@@ -56,18 +99,56 @@ nav.dropdown li:hover > ul {
 
 @media screen and (max-width: 64em) {
   nav.dropdown {
-    display: none; } }
+    display: none; }
+
+  header {
+    height: 3em; } }
+.content {
+  padding: 2.5em 1em 1em 1em;
+  -webkit-box-shadow: 0px 0px 6px #333333;
+  -moz-box-shadow: 0px 0px 6px #333333;
+  -ms-box-shadow: 0px 0px 6px #333333;
+  box-shadow: 0px 0px 6px #333333; }
+
+.nav_toggle {
+  font-size: 2em;
+  padding: 0.125em;
+  color: #aaa; }
+
+.nav_toggle:hover {
+  color: #eee; }
+
+.off_canvas_top_menu {
+  background: #444; }
+
+.nav_close_btn {
+  font-size: 1.25em;
+  padding: 0.5em;
+  color: #aaa; }
+
+.nav_prev_btn {
+  font-size: 1em;
+  padding: 0.75em;
+  color: #aaa;
+  text-transform: uppercase; }
+
+.nav_prev_btn i {
+  font-size: 1.25em; }
+
+.nav_close_btn:hover, .nav_prev_btn:hover {
+  color: #eee; }
+
 nav.off_canvas a, nav.off_canvas a:link, nav.off_canvas a:visited {
   color: black;
   text-decoration: none;
   padding: 0.5em 1em;
-  text-transform: uppercase;
-  background: #999999; }
+  text-transform: uppercase; }
 nav.off_canvas li:hover > a {
   color: white; }
 nav.off_canvas li {
-  border-bottom: 1px solid black; }
-nav.off_canvas li:hover > a {
+  background: #999999; }
+nav.off_canvas li:hover {
   background: #333333; }
-nav.off_canvas li:hover > a > span.dropdown_toggle {
-  border-left-color: white; }
+nav.off_canvas span.nav_next_btn {
+  padding: 0 0.5em;
+  font-weight: bold; }

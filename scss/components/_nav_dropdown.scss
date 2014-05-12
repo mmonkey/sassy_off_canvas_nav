@@ -10,18 +10,18 @@ $dropdown-width: 125px;
 // Colors
 //
 
-$nav-text: black;
-$nav-text-hover: white;
-$nav-li-background: #ccc;
-$nav-li-hover-background: #aaa;
+$nav-text: #eee;
+$nav-text-hover: #eee;
+$nav-li-background: #222;
+$nav-li-hover-background: #555;
 
 header {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
+	right: 0;
 	background: $nav-li-background;
-	@include box-shadow(0 6px 6px -3px #999);
+	@include box-shadow(0 6px 6px -3px #bbb);
 }
 
 nav.dropdown {
@@ -82,5 +82,8 @@ nav.dropdown {
 @media screen and (max-width: 64em) {
 	nav.dropdown {
 		display: none;
+	}
+	header {
+		height: 3em;
 	}
 }

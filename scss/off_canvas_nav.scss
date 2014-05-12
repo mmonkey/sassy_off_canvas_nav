@@ -5,7 +5,12 @@
 //
 
 // How wide the off-canvas navigation menu is (when opened)
-$off-canvas-width: 200px;
+$off-canvas-width: 13em;
+
+// When animating, this is the additional space the the main cavas "bounces", this number
+// will also add padding to the off_canvas_container and off_canvas_top_menu elements.
+// NOTE: This must be in the same units as $off-canvas-width.
+$off-canvas-animation-offset: 1.5em;
 
 // Position of the off-canvas navigation, options: right or left
 $off-canvas-position: left;
@@ -14,26 +19,14 @@ $off-canvas-position: left;
 $off-canvas-breakpoint: 64em;
 
 // How tall the off-canvas top menu is
-$off-canvas-top-menu-height: 50px;
-
-// How big the subnav toggle is (triangle)
-$subnav-toggle-size: 8px;
-
-// How bit the close button is
-$off-canvas-top-menu-button-size: 24px;
+$off-canvas-top-menu-height: 3em;
 
 //
 // Colors
 //
 
 $main-background: white;
-$nav-toggle-color: black;
 $off-canvas-background: grey;
-$off-canvas-top-menu-background: grey;
-$subnav-toggle-color: black;
-$subnav-toggle-hover-color: #ddd;
-$top-menu-button-color: black;
-$top-menu-button-hover-color: #ddd;
 
 //
 // Mixins
@@ -50,12 +43,11 @@ $top-menu-button-hover-color: #ddd;
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
-@mixin animation($animate...) {
-    $max: length($animate);
+@mixin animation($args...) {
+    $max: length($args);
     $animations: '';
-    
     @for $i from 1 through $max {
-        $animations: #{$animations + nth($animate, $i)};
+        $animations: #{$animations + nth($args, $i)};
 
         @if $i < $max {
             $animations: #{$animations + ", "};
@@ -122,12 +114,23 @@ html, body {
 }
 .container {
 	overflow: hidden;
-	background-color: black;
+	background-color: #000000;
+}
+.content {
+	background: $main-background;
+	#{$off-canvas-position}: 0;
+	position: relative;
+	padding: 1em 0;
+	z-index: 1;
+}
+.nav_toggle {
+	display: none;
+	cursor: pointer;
 }
 .off_canvas_container {
 	background: $off-canvas-background;
-	width: $off-canvas-width + 20px;
-	#{get-opposite-padding($off-canvas-position)}: 20px;
+	width: $off-canvas-width + $off-canvas-animation-offset;
+	#{get-opposite-padding($off-canvas-position)}: $off-canvas-animation-offset;
 	height: 100%;
 	position: fixed;
 	top: 0;
@@ -142,87 +145,33 @@ html, body {
 		display: block;
 	}
 }
-.content {
-	background: $main-background;
-	position: relative;
-	#{$off-canvas-position}: 0;
-	padding: 3em 1em 2em 1em;
-	z-index: 1;
-	@include box-shadow(0px 0px 6px #333);
-}
-.burger {
-	list-style: none;
-	position: relative;
-	margin: 0;
-	padding: 10px;
-	top: 0;	
-	#{$off-canvas-position}: 10px;
-	display: none;
-	cursor: pointer;
-	z-index: 100;
-	@include off-canvas-breakpoint {
-		display: block;
-	}
-
-	li {
-		width: 30px;
-		height: 4px;
-		background-color: $nav-toggle-color;
-		@include border-radius(0px);
-		margin: 5px 0;
-	}
-}
 .off_canvas_top_menu {
 	display: block;
 	position: fixed;
 	top: 0;
 	z-index: 3;
-	#{get-opposite-padding($off-canvas-position)}: 20px;
+	#{get-opposite-padding($off-canvas-position)}: $off-canvas-animation-offset;
 	#{$off-canvas-position}: 0;
-	width: $off-canvas-width + 20px;
+	width: $off-canvas-width + $off-canvas-animation-offset;
 	height: $off-canvas-top-menu-height;
-	background: $off-canvas-top-menu-background;
 }
 .off_canvas_toggles {
 	position: relative;
 	width: $off-canvas-width;
 	height: $off-canvas-top-menu-height;
 }
-.back_btn, .close_btn {
+.nav_close_btn {
+	position: absolute;
+	display: inline-block;
+	top: 0;
+	bottom: 0;
+	right: 0;
 	cursor: pointer;
 }
-.back_btn {
+.nav_prev_btn {
+	@extend .nav_close_btn;
 	display: none;
-	position: absolute;
-	text-decoration: none;
-	width: 20px;
-	height: 0; 
-	border-top: $off-canvas-top-menu-button-size / 2 solid transparent;
-	border-bottom: $off-canvas-top-menu-button-size / 2 solid transparent;
-	border-right: $off-canvas-top-menu-button-size / 2 solid $top-menu-button-color;
-	top: ($off-canvas-top-menu-height - ($off-canvas-top-menu-button-size / 2) * 2) / 2;
-	left: ($off-canvas-top-menu-height - ($off-canvas-top-menu-button-size / 2) * 2) / 2;
-}
-.back_btn:hover {
-	border-right-color: $top-menu-button-hover-color;
-}
-.close_btn {
-	@include border-radius(50%);
-	position: absolute;
-	font-size: $off-canvas-top-menu-button-size;
-	height: $off-canvas-top-menu-button-size + 5;
-	width: $off-canvas-top-menu-button-size + 5;
-	border: 1px solid $top-menu-button-color;
-	display: inline-block;
-	text-align: center;
-	line-height: $off-canvas-top-menu-button-size + 5;
-	top: ($off-canvas-top-menu-height - ($off-canvas-top-menu-button-size + 5)) / 2;
-	#{get-opposite($off-canvas-position)}: ($off-canvas-top-menu-height - ($off-canvas-top-menu-button-size+ 5)) / 2;
-	color: $top-menu-button-color;
-}
-.close_btn:hover {
-	color: $top-menu-button-hover-color;
-	border-color: $top-menu-button-hover-color;
+	left: 0;
 }
 nav.off_canvas {
 	position: relative;
@@ -246,28 +195,21 @@ nav.off_canvas {
 		bottom: 0;
 		background: $off-canvas-background;
 		width: $off-canvas-width;
-		#{$off-canvas-position}: $off-canvas-width + 20px;
+		#{$off-canvas-position}: $off-canvas-width + $off-canvas-animation-offset;
 		display: block;
 		@include transition(#{$off-canvas-position} .35s ease-in-out);
 	}
-	span.dropdown_toggle {
+	span.nav_next_btn {
 		position: absolute;
 		text-decoration: none;
 		right: 0;
-		width: 20px;
-		height: 0; 
-		border-top: $subnav-toggle-size solid transparent;
-		border-bottom: $subnav-toggle-size solid transparent;
-		border-left: $subnav-toggle-size solid $subnav-toggle-color;
+		display: inline-block;
 	}
-	li:hover > a > span.dropdown_toggle:hover {
-		border-left-color: $subnav-toggle-hover-color;
-	}
-	ul.dropdown_current {
+	ul.nav_level_current {
 		z-index: 2;
 		#{$off-canvas-position}: 0;
 	}
-	ul.dropdown_prev {
+	ul.nav_level_prev {
 		z-index: 1;
 		#{$off-canvas-position}: 0;
 	}
@@ -280,11 +222,16 @@ nav.off_canvas {
 	nav.off_canvas {
 		display: block;
 	}
-	.off_canvas_top_menu.open,
-	.off_canvas_container.open {
-		opacity: 1;
+	.nav_toggle {
+		display: inline-block;
+		position: absolute;
+		top: 0;
 		#{$off-canvas-position}: 0;
+	}
+	.off_canvas_animate.open {
+		opacity: 1;
 		position: fixed;
+		#{$off-canvas-position}: 0;
 		@include animation(slideIn .35s ease-in-out);
 	}
 
@@ -294,8 +241,7 @@ nav.off_canvas {
 	}
 
 	/*Nav Shrinking Closed Effect*/
-	.off_canvas_top_menu.close,
-	.off_canvas_container.close {
+	.off_canvas_animate.close {
 		opacity: .3;
 		#{$off-canvas-position}: $off-canvas-width / 4;
 		@include animation(slideOut .35s ease-in-out);
@@ -305,20 +251,24 @@ nav.off_canvas {
 		100% { opacity: .3; #{$off-canvas-position}: $off-canvas-width / 4; }
 	}
 
+	.content_animate {
+		#{$off-canvas-position}: 0;
+	}
+
 	/* CONTENT ANNIMATION */
-	.top_layer.open {   
-		#{$off-canvas-position}: $off-canvas-width;
+	.content_animate.open {
 		cursor: pointer;
+		#{$off-canvas-position}: $off-canvas-width;
 		@include animation(open .5s ease-in-out);
 	}
 	@include keyframes(open) {
 		0% { #{$off-canvas-position}: 0; }
-		70% { #{$off-canvas-position}: $off-canvas-width + 20px; }
+		70% { #{$off-canvas-position}: $off-canvas-width + $off-canvas-animation-offset; }
 		100% { #{$off-canvas-position}: $off-canvas-width; }
 	}
 
 	/*Content Sliding Closed Effect*/
-	.top_layer.close {
+	.content_animate.close {
 		#{$off-canvas-position}: 0;
 		@include animation(close .3s ease-in-out);
 	}

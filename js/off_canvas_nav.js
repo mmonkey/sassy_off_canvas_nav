@@ -1,12 +1,12 @@
 /* exported offCanvasNav */
 function offCanvasNav(opts) {
 
-    var nav_toggle = '.nav_toggle';
     var target_nav = '.main_nav';
+    var nav_next_btn = '';
 
     if( opts ) {
-        nav_toggle = opts.nav_toggle || '.nav_toggle';
         target_nav = opts.target_nav || '.main_nav';
+        nav_next_btn = opts.nav_next_btn || '';
     }
         function mobilecheck() {
             var check = false;
@@ -31,7 +31,7 @@ function offCanvasNav(opts) {
             $(items).removeClass('open').addClass('close');
         }
 
-        $(nav_toggle).on(clickevent, function(e) {
+        $('.nav_toggle').on(clickevent, function(e) {
             e.stopPropagation();
             e.preventDefault();
             if (content.hasClass('open')) {
@@ -45,7 +45,7 @@ function offCanvasNav(opts) {
                 close();
             }
         });
-        $('.close_btn').click( function() {
+        $('.nav_close_btn').click( function() {
             if (content.hasClass('open')) {
                 close();
             }
@@ -57,31 +57,31 @@ function offCanvasNav(opts) {
         main_nav.removeClass().addClass('off_canvas');
         $('.off_canvas_container').append(main_nav);
 
-        // Add "has_dropdown" classes to parent li's that contain dropdowns
+        // Add "has_levels" classes to parent li's that contain dropdowns
         $('nav.off_canvas ul li').each( function() {
-            $(this).has('ul').addClass('has_dropdown');
+            $(this).has('ul').addClass('has_levels');
         });
 
-        $('.has_dropdown > a').append('<span class="dropdown_toggle"></span>');
+        $('.has_levels > a').append('<span class="nav_next_btn">'+nav_next_btn+'</span>');
 
-        $('.dropdown_toggle').click( function(e) {
+        $('.nav_next_btn').click( function(e) {
             e.preventDefault();
-            if( $(this).closest('ul').hasClass('dropdown_current') ) {
-                $(this).closest('ul').removeClass('dropdown_current').addClass('dropdown_prev');
+            if( $(this).closest('ul').hasClass('nav_level_current') ) {
+                $(this).closest('ul').removeClass('nav_level_current').addClass('nav_level_prev');
             }
-            $(this).closest('li').children('ul').addClass('dropdown_current');
-            $('.back_btn').fadeIn(400);
+            $(this).closest('li').children('ul').addClass('nav_level_current');
+            $('.nav_prev_btn').fadeIn(400);
         });
 
-        $('.back_btn').click( function(e) {
+        $('.nav_prev_btn').click( function(e) {
             e.preventDefault();
-            var current = $('.dropdown_current');
-            if( current.closest('li').closest('ul').hasClass('dropdown_prev') ) {
-                current.closest('li').closest('ul').removeClass('dropdown_prev').addClass('dropdown_current');
+            var current = $('.nav_level_current');
+            if( current.closest('li').closest('ul').hasClass('nav_level_prev') ) {
+                current.closest('li').closest('ul').removeClass('nav_level_prev').addClass('nav_level_current');
             } else {
-                $('.back_btn').fadeOut(400);
+                $('.nav_prev_btn').fadeOut(400);
             }
-            current.removeClass('dropdown_current');
+            current.removeClass('nav_level_current');
         });
 
     });

@@ -1,0 +1,142 @@
+<h1>Sassy Off-Canvas Navigation</h1>
+
+<p>Off-Canvas Navigation with CSS Transitions, written in SASS and jQuery. Sassy Off-Canvas Navigation supports single-level navigation, multi-level navigation and plays nice with the rest of your code!</p>
+
+<p>Version: 1.0.0</p>
+
+<h2>Introduction</h2>
+
+<p>Finding the perfect off-canvas navigation for responsive website developent, has prooven to be a harder task than I thought. Finding one is easy, but finding one that supports multi-level navigation, however, is not.</p>
+
+<h2>Getting Started</h2>
+
+<h3>HTML</h3>
+
+<p>Using Off-Canvas Navigation, couldn&rsquo;t be easier, to get started add the following into the <code>&lt;head&gt;</code> of your html.</p>
+
+<p><code>html
+&lt;link rel="stylesheet" type="text/css" href="css/normalize.css"&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/off_canvas_nav.css"&gt;
+&lt;link rel="stylesheet" type="text/css" href="css/style.css"&gt;
+</code></p>
+
+<p>Link the jQuery in the <code>&lt;head&gt;</code> of your html.
+You can add any version of jquery you would like, but as this writing, this is the latest.</p>
+
+<p>```html</p>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<script type="text/javascript" src="js/off_canvas_nav.js"></script>
+
+
+<p>```</p>
+
+<p>Now inside the <code>&lt;body&gt;</code> tags, add the main container, off-canvas container and content-containers.</p>
+
+<p>Anything you put into the <code>.off_canvas_container</code> will be displayed in the panel that slides out when the menu toggle is clicked. Also anything you put into the <code>.content</code> div will be displayed in the main area, and slide over to reveal the off-canvas navigation.</p>
+
+<p>```html</p>
+
+<div class="container">
+    
+    <div class="off_canvas_animate slide off_canvas_container">
+
+    </div>
+
+    <div class="content_animate slide content">
+
+    </div>
+
+</div>
+
+
+<p>```</p>
+
+<p>Add the off-canavs top menu controls. This should be in the <code>.off_canvas_container</code> div.</p>
+
+<p>```html</p>
+
+<div class="off_canvas_top_menu slide">
+    <div class="off_canvas_toggles">
+        <span class="nav_prev_btn"></span>
+        <span class="nav_close_btn"></span>
+    </div>
+</div>
+
+
+<p>```</p>
+
+<p>Add the nav toggle button and your navigation to the <code>.content</code> div. I like to wrap mine in <code>&lt;header&gt;</code> tags</p>
+
+<p><code>html
+&lt;header class="content_animate slide"&gt;
+    &lt;span class="nav_toggle"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;nav class="dropdown"&gt;
+    ...
+    &lt;/nav&gt;
+&lt;/header&gt;
+</code></p>
+
+<p><strong>Note:</strong> <em>Any element that is not inside <code>.content</code> or any element that has a fixed position, that needs to slide away to reveal the off-canvas navigation, needs the following classes:</em></p>
+
+<p><code>html
+class="content_animate slide"
+</code></p>
+
+<h3>BYO Icons</h3>
+
+<p>All <code>._btn</code> and <code>._toggle</code> elements should be filled with your own icons and text. Out-of-the-box, these elements have very basic position-based styling.</p>
+
+<p>These:
+<code>html
+&lt;span class="nav_prev_btn"&gt;&lt;/span&gt;
+&lt;span class="nav_close_btn"&gt;&lt;/span&gt;
+&lt;span class="nav_toggle"&gt;&lt;/span&gt;
+</code>
+Turn into:
+<code>html
+&lt;span class="nav_prev_btn"&gt;&lt;i class="icon-left"&gt;&lt;/i&gt;Back&lt;/span&gt;
+&lt;span class="nav_close_btn"&gt;&lt;i class="icon-cancel"&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;span class="nav_toggle"&gt;&lt;i class="icon-menu"&gt;&lt;/span&gt;
+</code>html</p>
+
+<h3>jQuery</h3>
+
+<p>Before the <code>&lt;/body&gt;</code> tag, call the offCanvasNav() script.</p>
+
+<p>```html</p>
+
+<script>
+    offCanvasNav();
+</script>
+
+
+<p>```</p>
+
+<h3>Options</h3>
+
+<p>Some options are available when calling the offCanvasNav() script.</p>
+
+<p>```html</p>
+
+<script>
+    offCanvasNav({
+        target_nav: '.dropdown',
+        nav_next_btn: '<i class="icon-right"></i>'
+    });
+</script>
+
+
+<p>```</p>
+
+<p><strong>Note:</strong> *Sassy Off-Canvas Navigation needs to know what your navigation class is, because it will make a duplicate navigation and put it into the <code>.off_canvas_container</code>. The default class is <code>.main_nav</code> *</p>
+
+<p><em>The newly created nav is</em> <code>&lt;nav class="off_canvas"&gt;</code></p>
+
+<h2>Change Log</h2>
+
+<p>v1.0.0 - Initial Release</p>
+
+<p>by CJ O'Hara.</p>

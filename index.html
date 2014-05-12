@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Sassy Off-Canvas Navigation</title>
 <link rel="stylesheet" type="text/css" href="css/normalize.css">
 <link rel="stylesheet" type="text/css" href="css/off_canvas_nav.css">
@@ -17,21 +18,21 @@
 
 	<div class="container">
 
-		<div class="off_canvas_container slide">
+		<div class="off_canvas_animate slide off_canvas_container">
 
 			<div class="off_canvas_top_menu slide">
 				<div class="off_canvas_toggles">
-					<span class="back_btn"></span>
-					<span class="close_btn">X</span>
+					<span class="nav_prev_btn"><i class="icon-left"></i>Back</span>
+					<span class="nav_close_btn"><i class="icon-cancel"></i></span>
 				</div>
 			</div>
 
 		</div>
 
-		<div class="top_layer content slide">
+		<div class="content_animate slide content">
 
-			<header class="top_layer slide">
-				<ul class="nav_toggle burger"><li></li><li></li><li></li></ul>
+			<header class="content_animate slide">
+				<span class="nav_toggle"><i class="icon-menu"></i></span>
 				<nav class="dropdown">
 					<ul>
 						<li><a href="">Level One 1</a>
@@ -88,8 +89,6 @@
 						<li><a href="">Level One 6</a></li>
 						<li><a href="">Level One 7</a></li>
 						<li><a href="">Level One 8</a></li>
-						<li><a href="">Level One 9</a></li>
-						<li><a href="">Level One 10</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -123,8 +122,8 @@
 
 <script>
 	offCanvasNav({
-		nav_toggle: ".nav_toggle",
-		target_nav: ".dropdown"
+		target_nav: '.dropdown',
+		nav_next_btn: '<i class="icon-right"></i>'
 	});
 </script>
 
