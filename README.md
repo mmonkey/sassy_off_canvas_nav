@@ -100,7 +100,7 @@ Turn into:
 
 ### jQuery
 
-Before the `</body>` tag, call the offCanvasNav() script.
+Before the `<body>` closing tag, call the offCanvasNav() script.
 
 ```html
 <script>
