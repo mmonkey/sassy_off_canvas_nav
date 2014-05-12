@@ -104,7 +104,7 @@ Before the `<body>` closing tag, call the offCanvasNav() script.
 </script>
 ```
 
-### Options
+## Options
 
 #### jQuery
 
