@@ -106,6 +106,8 @@ Before the `<body>` closing tag, call the offCanvasNav() script.
 
 ### Options
 
+#### jQuery
+
 Some options are available when calling the offCanvasNav() script.
 
 ```html
@@ -120,6 +122,40 @@ Some options are available when calling the offCanvasNav() script.
 **Note:** *Sassy Off-Canvas Navigation needs to know what your navigation class is, because it will make a duplicate navigation and put it into the `.off_canvas_container`. The default class is `.main_nav` *
 
 *The newly created nav is* `<nav class="off_canvas">`
+
+#### SASS
+
+You can find most of the options in the off_canvas_nav.scss file:
+
+```scss
+//
+// Variables
+//
+
+// How wide the off-canvas navigation menu is (when opened)
+$off-canvas-width: 13em;
+
+// When animating, this is the additional space the the main cavas "bounces", this number
+// will also add padding to the off_canvas_container and off_canvas_top_menu elements.
+// NOTE: This must be in the same units as $off-canvas-width.
+$off-canvas-animation-offset: 1.5em;
+
+// Position of the off-canvas navigation, options: right or left
+$off-canvas-position: left;
+
+// What breakpoint should the off-canvas navigation be shown
+$off-canvas-breakpoint: 64em;
+
+// How tall the off-canvas top menu is
+$off-canvas-top-menu-height: 3em;
+
+//
+// Colors
+//
+
+$main-background: white;
+$off-canvas-background: grey;
+```
 
 ## Credits
 
