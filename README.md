@@ -5,6 +5,8 @@ Off-Canvas Navigation with CSS Transitions, written in SASS and jQuery. Sassy Of
 
 Version: 1.0.0
 
+Adapted from: http://www.roblukedesign.com/trunk/trunk.html
+
 ## Introduction
 
 Finding the perfect off-canvas navigation for responsive website developent, has prooven to be a harder task than I thought. Finding one is easy, but finding one that supports multi-level navigation, however, is not.
@@ -50,7 +52,7 @@ Anything you put into the `.off_canvas_container` will be displayed in the panel
 Add the off-canavs top menu controls. This should be in the `.off_canvas_container` div.
 
 ```html
-<div class="off_canvas_top_menu slide">
+<div class="off_canvas_animate slide off_canvas_top_menu">
 	<div class="off_canvas_toggles">
 		<span class="nav_prev_btn"></span>
 		<span class="nav_close_btn"></span>
@@ -73,6 +75,10 @@ Add the nav toggle button and your navigation to the `.content` div. I like to w
 
 ```html
 class="content_animate slide"
+```
+The same goes for off-canvas elements:
+```html
+class="off_canvas_animation slide"
 ```
 
 ### BYO Icons
