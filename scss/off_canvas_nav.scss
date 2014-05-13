@@ -137,9 +137,7 @@ html, body {
 	bottom: 0;
 	z-index: 0;
 	display: none;
-	overflow-x: hidden;
-	overflow-y: scroll;
-  	-webkit-overflow-scrolling: touch;
+	overflow: hidden;
 
 	@include off-canvas-breakpoint {
 		display: block;
@@ -177,9 +175,8 @@ nav.off_canvas {
 	position: relative;
 	margin-top: $off-canvas-top-menu-height;
 	display: none;
-	overflow-x: hidden;
-	overflow-y: scroll;
-	webkit-overflow-scrolling: touch;
+	width: $off-canvas-width;
+	overflow: hidden;
 
 	ul {
 		list-style: none;
@@ -249,6 +246,11 @@ nav.off_canvas {
 	@include keyframes(slideOut) {
 		0% { opacity: 1; #{$off-canvas-position}: 0; }
 		100% { opacity: .3; #{$off-canvas-position}: $off-canvas-width / 4; }
+	}
+
+	.off_canvas_container.open {
+		overflow-x: hidden;
+		overflow-y: scroll;
 	}
 
 	.content_animate {

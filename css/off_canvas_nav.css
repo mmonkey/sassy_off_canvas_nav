@@ -27,9 +27,7 @@ html, body {
   bottom: 0;
   z-index: 0;
   display: none;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch; }
+  overflow: hidden; }
   @media only screen and (max-width: 64em) {
     .off_canvas_container {
       display: block; } }
@@ -65,9 +63,8 @@ nav.off_canvas {
   position: relative;
   margin-top: 3em;
   display: none;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  webkit-overflow-scrolling: touch; }
+  width: 13em;
+  overflow: hidden; }
   nav.off_canvas ul {
     list-style: none;
     margin: 0;
@@ -194,6 +191,10 @@ nav.off_canvas {
     100% {
       opacity: .3;
       left: 3.25em; } }
+  .off_canvas_container.open {
+    overflow-x: hidden;
+    overflow-y: scroll; }
+
   .content_animate {
     left: 0; }
 
