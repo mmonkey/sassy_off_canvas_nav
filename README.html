@@ -2,10 +2,6 @@
 
 <p>Off-Canvas Navigation with CSS Transitions, written in SASS and jQuery. Sassy Off-Canvas Navigation supports single-level navigation, multi-level navigation and plays nice with the rest of your code!</p>
 
-<p>Version: 1.0.0</p>
-
-<p>Adapted from: http://www.roblukedesign.com/trunk/trunk.html</p>
-
 <h2>Introduction</h2>
 
 <p>Finding the perfect off-canvas navigation for responsive website developent, has prooven to be a harder task than I thought. Finding one is easy, but finding one that supports multi-level navigation, however, is not.</p>
@@ -121,7 +117,9 @@ Turn into:
 
 <p>```</p>
 
-<h3>Options</h3>
+<h2>Options</h2>
+
+<h4>jQuery</h4>
 
 <p>Some options are available when calling the offCanvasNav() script.</p>
 
@@ -141,8 +139,42 @@ Turn into:
 
 <p><em>The newly created nav is</em> <code>&lt;nav class="off_canvas"&gt;</code></p>
 
-<h2>Change Log</h2>
+<h4>SASS</h4>
 
-<p>v1.0.0 - Initial Release</p>
+<p>You can find most of the options in the off_canvas_nav.scss file:</p>
 
-<p>by CJ O'Hara.</p>
+<p>```scss
+//
+// Variables
+//</p>
+
+<p>// How wide the off-canvas navigation menu is (when opened)
+$off-canvas-width: 13em;</p>
+
+<p>// When animating, this is the additional space the the main cavas &ldquo;bounces&rdquo;, this number
+// will also add padding to the off_canvas_container and off_canvas_top_menu elements.
+// NOTE: This must be in the same units as $off-canvas-width.
+$off-canvas-animation-offset: 1.5em;</p>
+
+<p>// Position of the off-canvas navigation, options: right or left
+$off-canvas-position: left;</p>
+
+<p>// What breakpoint should the off-canvas navigation be shown
+$off-canvas-breakpoint: 64em;</p>
+
+<p>// How tall the off-canvas top menu is
+$off-canvas-top-menu-height: 3em;</p>
+
+<p>//
+// Colors
+//</p>
+
+<p>$main-background: white;
+$off-canvas-background: grey;
+```</p>
+
+<h2>Credits</h2>
+
+<p>Sassy Off-Canvas Nav by CJ O'Hara.</p>
+
+<p>Adapted from: <a href="http://www.roblukedesign.com/trunk/trunk.html">Trunk-js</a> by Rob Luke</p>
