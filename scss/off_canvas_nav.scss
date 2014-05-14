@@ -137,7 +137,7 @@ html, body {
 	bottom: 0;
 	z-index: 0;
 	display: none;
-	overflow: hidden;
+	overflow-x: hidden;
 
 	@include off-canvas-breakpoint {
 		display: block;
@@ -176,7 +176,6 @@ nav.off_canvas {
 	margin-top: $off-canvas-top-menu-height;
 	display: none;
 	width: $off-canvas-width;
-	overflow: hidden;
 
 	ul {
 		list-style: none;
@@ -193,7 +192,7 @@ nav.off_canvas {
 		background: $off-canvas-background;
 		width: $off-canvas-width;
 		#{$off-canvas-position}: $off-canvas-width + $off-canvas-animation-offset;
-		display: block;
+		display: none;
 		@include transition(#{$off-canvas-position} .35s ease-in-out);
 	}
 	span.nav_next_btn {
@@ -205,10 +204,12 @@ nav.off_canvas {
 	ul.nav_level_current {
 		z-index: 2;
 		#{$off-canvas-position}: 0;
+		display: block;
 	}
 	ul.nav_level_prev {
 		z-index: 1;
 		#{$off-canvas-position}: 0;
+		display: block;
 	}
 }
 
@@ -272,10 +273,11 @@ nav.off_canvas {
 	/*Content Sliding Closed Effect*/
 	.content_animate.close {
 		#{$off-canvas-position}: 0;
-		@include animation(close .3s ease-in-out);
+		@include animation(close .4s ease-in-out);
 	}
 	@include keyframes(close) {
 		0% { #{$off-canvas-position}: $off-canvas-width; }
+		70% { #{$off-canvas-position}: 0 - $off-canvas-animation-offset; }
 		100% { #{$off-canvas-position}: 0; }
 	}
 }

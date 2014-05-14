@@ -18,7 +18,7 @@ html, body {
   cursor: pointer; }
 
 .off_canvas_container {
-  background: gray;
+  background: grey;
   width: 14.5em;
   padding-right: 1.5em;
   height: 100%;
@@ -27,7 +27,7 @@ html, body {
   bottom: 0;
   z-index: 0;
   display: none;
-  overflow: hidden; }
+  overflow-x: hidden; }
   @media only screen and (max-width: 64em) {
     .off_canvas_container {
       display: block; } }
@@ -63,8 +63,7 @@ nav.off_canvas {
   position: relative;
   margin-top: 3em;
   display: none;
-  width: 13em;
-  overflow: hidden; }
+  width: 13em; }
   nav.off_canvas ul {
     list-style: none;
     margin: 0;
@@ -75,10 +74,10 @@ nav.off_canvas {
     position: absolute;
     top: 0;
     bottom: 0;
-    background: gray;
+    background: grey;
     width: 13em;
     left: 14.5em;
-    display: block;
+    display: none;
     -webkit-transition: left 0.35s ease-in-out;
     -moz-transition: left 0.35s ease-in-out;
     -ms-transition: left 0.35s ease-in-out;
@@ -91,10 +90,12 @@ nav.off_canvas {
     display: inline-block; }
   nav.off_canvas ul.nav_level_current {
     z-index: 2;
-    left: 0; }
+    left: 0;
+    display: block; }
   nav.off_canvas ul.nav_level_prev {
     z-index: 1;
-    left: 0; }
+    left: 0;
+    display: block; }
 
 @media only screen and (max-width: 64em) {
   nav.main_nav {
@@ -126,6 +127,7 @@ nav.off_canvas {
     100% {
       opacity: 1;
       left: 0; } }
+
   @-moz-keyframes slideIn {
     0% {
       opacity: .3;
@@ -134,6 +136,7 @@ nav.off_canvas {
     100% {
       opacity: 1;
       left: 0; } }
+
   @-o-keyframes slideIn {
     0% {
       opacity: .3;
@@ -142,6 +145,7 @@ nav.off_canvas {
     100% {
       opacity: 1;
       left: 0; } }
+
   @keyframes slideIn {
     0% {
       opacity: .3;
@@ -150,6 +154,7 @@ nav.off_canvas {
     100% {
       opacity: 1;
       left: 0; } }
+
   /*Nav Shrinking Closed Effect*/
   .off_canvas_animate.close {
     opacity: .3;
@@ -167,6 +172,7 @@ nav.off_canvas {
     100% {
       opacity: .3;
       left: 3.25em; } }
+
   @-moz-keyframes slideOut {
     0% {
       opacity: 1;
@@ -175,6 +181,7 @@ nav.off_canvas {
     100% {
       opacity: .3;
       left: 3.25em; } }
+
   @-o-keyframes slideOut {
     0% {
       opacity: 1;
@@ -183,6 +190,7 @@ nav.off_canvas {
     100% {
       opacity: .3;
       left: 3.25em; } }
+
   @keyframes slideOut {
     0% {
       opacity: 1;
@@ -191,6 +199,7 @@ nav.off_canvas {
     100% {
       opacity: .3;
       left: 3.25em; } }
+
   .off_canvas_container.open {
     overflow-x: hidden;
     overflow-y: scroll; }
@@ -216,6 +225,7 @@ nav.off_canvas {
 
     100% {
       left: 13em; } }
+
   @-moz-keyframes open {
     0% {
       left: 0; }
@@ -225,6 +235,7 @@ nav.off_canvas {
 
     100% {
       left: 13em; } }
+
   @-o-keyframes open {
     0% {
       left: 0; }
@@ -234,6 +245,7 @@ nav.off_canvas {
 
     100% {
       left: 13em; } }
+
   @keyframes open {
     0% {
       left: 0; }
@@ -243,35 +255,51 @@ nav.off_canvas {
 
     100% {
       left: 13em; } }
+
   /*Content Sliding Closed Effect*/
   .content_animate.close {
     left: 0;
-    -webkit-animation: close 0.3s ease-in-out;
-    -moz-animation: close 0.3s ease-in-out;
-    -o-animation: close 0.3s ease-in-out;
-    animation: close 0.3s ease-in-out; }
+    -webkit-animation: close 0.4s ease-in-out;
+    -moz-animation: close 0.4s ease-in-out;
+    -o-animation: close 0.4s ease-in-out;
+    animation: close 0.4s ease-in-out; }
 
   @-webkit-keyframes close {
     0% {
       left: 13em; }
 
+    70% {
+      left: -1.5em; }
+
     100% {
       left: 0; } }
+
   @-moz-keyframes close {
     0% {
       left: 13em; }
 
+    70% {
+      left: -1.5em; }
+
     100% {
       left: 0; } }
+
   @-o-keyframes close {
     0% {
       left: 13em; }
 
+    70% {
+      left: -1.5em; }
+
     100% {
       left: 0; } }
+
   @keyframes close {
     0% {
       left: 13em; }
+
+    70% {
+      left: -1.5em; }
 
     100% {
       left: 0; } } }
