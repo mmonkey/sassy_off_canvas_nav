@@ -178,6 +178,8 @@ nav.off_canvas {
 	width: $off-canvas-width;
 
 	ul {
+		position: absolute;
+		width: $off-canvas-width;
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -192,7 +194,8 @@ nav.off_canvas {
 		background: $off-canvas-background;
 		width: $off-canvas-width;
 		#{$off-canvas-position}: $off-canvas-width + $off-canvas-animation-offset;
-		display: none;
+		display: block;
+		visibility: hidden;
 		@include transition(#{$off-canvas-position} .35s ease-in-out);
 	}
 	span.nav_next_btn {
@@ -205,14 +208,13 @@ nav.off_canvas {
 		z-index: 2;
 		#{$off-canvas-position}: 0;
 		display: block;
-		overflow: visible;
+		visibility: visible;
 	}
 	ul.nav_level_prev {
-		position: static;
 		z-index: 1;
 		#{$off-canvas-position}: 0;
 		display: block;
-		overflow: hidden;
+		visibility: hidden;
 	}
 }
 
