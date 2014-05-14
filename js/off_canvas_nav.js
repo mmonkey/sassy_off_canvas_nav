@@ -70,11 +70,8 @@ function offCanvasNav(opts) {
             if( $(this).closest('ul').hasClass('nav_level_current') ) {
                 $(this).closest('ul').removeClass('nav_level_current').addClass('nav_level_prev');
             }
-            var height = $(this).closest('li').children('ul').outerHeight();
             $(this).closest('li').children('ul').addClass('nav_level_current');
             $('.nav_prev_btn').fadeIn(400);
-            $('nav.off_canvas').height( height );
-            console.log( height );
         });
 
         $('.nav_prev_btn').click( function(e) {
@@ -86,7 +83,6 @@ function offCanvasNav(opts) {
                 $('.nav_prev_btn').fadeOut(400);
             }
             current.removeClass('nav_level_current');
-            $('nav.off_canvas').height( $('.nav_level_current').innerHeight() );
         });
 
     });
