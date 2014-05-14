@@ -91,11 +91,14 @@ nav.off_canvas {
   nav.off_canvas ul.nav_level_current {
     z-index: 2;
     left: 0;
-    display: block; }
+    display: block;
+    overflow: visible; }
   nav.off_canvas ul.nav_level_prev {
+    position: static;
     z-index: 1;
     left: 0;
-    display: block; }
+    display: block;
+    overflow: hidden; }
 
 @media only screen and (max-width: 64em) {
   nav.main_nav {

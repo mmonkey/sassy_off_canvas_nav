@@ -205,11 +205,14 @@ nav.off_canvas {
 		z-index: 2;
 		#{$off-canvas-position}: 0;
 		display: block;
+		overflow: visible;
 	}
 	ul.nav_level_prev {
+		position: static;
 		z-index: 1;
 		#{$off-canvas-position}: 0;
 		display: block;
+		overflow: hidden;
 	}
 }
 
