@@ -172,13 +172,19 @@ html, body {
 	left: 0;
 }
 nav.off_canvas {
-	position: relative;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	#{$off-canvas-position}: 0;
 	margin-top: $off-canvas-top-menu-height;
 	display: none;
 	width: $off-canvas-width;
-
+	overflow: hidden;
 	ul {
 		position: absolute;
+		top: 0;
+		bottom: 0;
+		#{$off-canvas-position}: 0;
 		width: $off-canvas-width;
 		list-style: none;
 		margin: 0;
@@ -195,7 +201,6 @@ nav.off_canvas {
 		width: $off-canvas-width;
 		#{$off-canvas-position}: $off-canvas-width + $off-canvas-animation-offset;
 		display: block;
-		visibility: hidden;
 		@include transition(#{$off-canvas-position} .35s ease-in-out);
 	}
 	span.nav_next_btn {
@@ -208,13 +213,12 @@ nav.off_canvas {
 		z-index: 2;
 		#{$off-canvas-position}: 0;
 		display: block;
-		visibility: visible;
 	}
 	ul.nav_level_prev {
 		z-index: 1;
 		#{$off-canvas-position}: 0;
 		display: block;
-		visibility: hidden;
+		overflow: hidden;
 	}
 }
 
@@ -255,6 +259,10 @@ nav.off_canvas {
 	}
 
 	.off_canvas_container.open {
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+	.off_canvas_container.open ul.nav_level_current {
 		overflow-x: hidden;
 		overflow-y: scroll;
 	}

@@ -60,12 +60,19 @@ html, body {
   left: 0; }
 
 nav.off_canvas {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
   margin-top: 3em;
   display: none;
-  width: 13em; }
+  width: 13em;
+  overflow: hidden; }
   nav.off_canvas ul {
     position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
     width: 13em;
     list-style: none;
     margin: 0;
@@ -80,7 +87,6 @@ nav.off_canvas {
     width: 13em;
     left: 14.5em;
     display: block;
-    visibility: hidden;
     -webkit-transition: left 0.35s ease-in-out;
     -moz-transition: left 0.35s ease-in-out;
     -ms-transition: left 0.35s ease-in-out;
@@ -94,13 +100,12 @@ nav.off_canvas {
   nav.off_canvas ul.nav_level_current {
     z-index: 2;
     left: 0;
-    display: block;
-    visibility: visible; }
+    display: block; }
   nav.off_canvas ul.nav_level_prev {
     z-index: 1;
     left: 0;
     display: block;
-    visibility: hidden; }
+    overflow: hidden; }
 
 @media only screen and (max-width: 64em) {
   nav.main_nav {
@@ -206,6 +211,10 @@ nav.off_canvas {
       left: 3.25em; } }
 
   .off_canvas_container.open {
+    overflow-x: hidden;
+    overflow-y: scroll; }
+
+  .off_canvas_container.open ul.nav_level_current {
     overflow-x: hidden;
     overflow-y: scroll; }
 

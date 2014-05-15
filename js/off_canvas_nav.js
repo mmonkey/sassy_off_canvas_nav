@@ -63,6 +63,8 @@ function offCanvasNav(opts) {
             $(this).has('ul').addClass('has_levels');
         });
 
+        $('nav.off_canvas > ul').addClass('nav_level_current');
+
         $('.has_levels > a').append('<span class="nav_next_btn">'+nav_next_btn+'</span>');
 
         $('.nav_next_btn').click( function(e) {
@@ -80,6 +82,9 @@ function offCanvasNav(opts) {
             if( current.closest('li').closest('ul').hasClass('nav_level_prev') ) {
                 current.closest('li').closest('ul').removeClass('nav_level_prev').addClass('nav_level_current');
             } else {
+                $('.nav_prev_btn').fadeOut(400);
+            }
+            if( $('nav.off_canvas > ul').hasClass('nav_level_current') ) {
                 $('.nav_prev_btn').fadeOut(400);
             }
             current.removeClass('nav_level_current');
